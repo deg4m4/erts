@@ -3,8 +3,12 @@ exports.__esModule = true;
 var electron_1 = require("electron");
 var path = require("path");
 var mainWindow;
+var dev = false;
 electron_1.ipcMain.on("setpos", function (e, v) {
-    mainWindow === null || mainWindow === void 0 ? void 0 : mainWindow.setPosition(v.x, v.y);
+    var pos = JSON.parse(v);
+    var wpos = mainWindow === null || mainWindow === void 0 ? void 0 : mainWindow.getPosition();
+    console.log();
+    /*  mainWindow?.setPosition(wpos?.at(0) + pos.x, wpos?.at(1) + pos.y) */
 });
 function createWindow() {
     mainWindow = new electron_1.BrowserWindow({
@@ -12,9 +16,18 @@ function createWindow() {
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         },
-        width: 800
+        width: 800,
+        frame: false,
+        x: 150,
+        y: 5
     });
-    mainWindow.loadFile(path.join(__dirname, "../build/index.html"));
+    mainWindow.removeMenu();
+    if (dev) {
+        mainWindow.loadURL("http://localhost:3000/");
+    }
+    else {
+        mainWindow.loadFile(path.join(__dirname, "../build/index.html"));
+    }
     mainWindow.webContents.openDevTools();
     mainWindow.on("closed", function () {
         mainWindow = null;

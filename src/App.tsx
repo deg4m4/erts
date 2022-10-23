@@ -5,9 +5,12 @@ function App() {
 
   return (
     <div className="App">
+      <div className='win-frame' id="winframe">
+    
+      </div>
 
-<h1>Hello, Woeld!</h1>
-
+      <h1>Hello, World!</h1>
+    
     </div>
   );
 }
