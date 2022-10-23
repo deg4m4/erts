@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "electron/**/*"
+, "build/static/preload.js", "build/electron.js"  ]
 }
