@@ -1,19 +1,8 @@
-import { app, BrowserWindow, ipcMain } from "electron"
+import { app, BrowserWindow } from "electron"
 import * as path from "path"
 
 let mainWindow: Electron.BrowserWindow | null;
 let dev = false;
-
-ipcMain.on("setpos", (e, v) => {
-
-    let pos = JSON.parse(v)
-
-    let wpos = mainWindow?.getPosition()
-
-    console.log();
-    
-   /*  mainWindow?.setPosition(wpos?.at(0) + pos.x, wpos?.at(1) + pos.y) */
-})
 
 function createWindow() {
     mainWindow = new BrowserWindow({

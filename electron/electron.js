@@ -4,12 +4,6 @@ var electron_1 = require("electron");
 var path = require("path");
 var mainWindow;
 var dev = false;
-electron_1.ipcMain.on("setpos", function (e, v) {
-    var pos = JSON.parse(v);
-    var wpos = mainWindow === null || mainWindow === void 0 ? void 0 : mainWindow.getPosition();
-    console.log();
-    /*  mainWindow?.setPosition(wpos?.at(0) + pos.x, wpos?.at(1) + pos.y) */
-});
 function createWindow() {
     mainWindow = new electron_1.BrowserWindow({
         height: 600,
